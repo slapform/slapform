@@ -1,0 +1,22 @@
+{
+  "name": "somiibo",
+  "version": "1.0.3",
+  "description": "The official library for Somiibo. Develop your own modules for the Somiibo platform.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/somiibo/somiibo-library"
+  },
+  "keywords": [
+    "somiibo"
+  ],
+  "author": "ITW Creative Works",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itw-creative-works/somiibo-library/issues"
+  },
+  "homepage": "https://somiibo.com"
+}
