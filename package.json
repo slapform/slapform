@@ -1,22 +1,24 @@
 {
-  "name": "somiibo",
-  "version": "1.0.3",
-  "description": "The official library for Somiibo. Develop your own modules for the Somiibo platform.",
+  "name": "slapform",
+  "version": "1.0.0",
+  "description": "The official library for Slapform. Develop your own modules for the Slapform Developer platform.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/somiibo/somiibo-library"
+    "url": "git+https://github.com/slapform/slapform-npm"
   },
   "keywords": [
-    "somiibo"
+    "slapform",
+    "html forms",
+    "form backend"
   ],
   "author": "ITW Creative Works",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/itw-creative-works/somiibo-library/issues"
+    "url": "https://github.com/slapform/slapform-npm/issues"
   },
-  "homepage": "https://somiibo.com"
+  "homepage": "https://slapform.com"
 }
