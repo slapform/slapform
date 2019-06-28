@@ -54,23 +54,23 @@ You can also use Slapform without installing any additional libraries by using H
 ## Using Slapform
 ### 1. Via the npm module
 ```js
-  const slapform = new (require('slapform'));
-  slapform.submit({
-    account: 'your@email.com', // Replace this with the email that submissions should be sent to
-    data: { // The data you want submitted and emailed to you
-      name: 'Jon Snow',
-      message: 'Hello World!',
-    },
-  })
-  .success(function (response, data) { // This function runs only on success
-    console.log('Success!', response, data);
-  })
-  .error(function (response, error) { // This function runs only on error
-    console.log('Fail!', response, error);
-  })
-  .always(function (response) { // This function runs regardless of success or error
-    console.log('This always runs!', response);
-  });
+const slapform = new (require('slapform'));
+slapform.submit({
+  account: 'your@email.com', // Replace this with the email that submissions should be sent to
+  data: { // The data you want submitted and emailed to you
+    name: 'Jon Snow',
+    message: 'Hello World!',
+  },
+})
+.success(function (response, data) { // This function runs only on success
+  console.log('Success!', response, data);
+})
+.error(function (response, error) { // This function runs only on error
+  console.log('Fail!', response, error);
+})
+.always(function (response) { // This function runs regardless of success or error
+  console.log('This always runs!', response);
+});
 ```
 
 ### 2. Via the CDN script
@@ -115,21 +115,21 @@ You can use Slapform without installing this npm module or any other javascript 
 ### Using Advanced Name Triggers
 In addition to sending simple data, you can take advantage of advanced name triggers to submit with your data. These will trigger special events on the server such as webhooks or the ability to process payments.
 ```js
-  slapform.submit({
-    account: 'your@email.com', // Replace this with the email that submissions should be sent to
-    data: {
-      name: 'Jon Snow',
-      message: 'Hello World! This is my first Slapform submission.',
-      slap_subject: 'My Favorite Message',
-      slap_replyto: 'custom@replyto.com'
-      slap_debug: true,
-      slap_webhook: 'https://yourwebsite.com/webhook',
-      slap_honey: ''
-      /* These Slapform Name Triggers exist but aren't applicable to AJAX submissions */
-      // slap_redirect: 'https://yourwebsite.com',
-      // slap_captcha: false,
-    },
-  })
+slapform.submit({
+  account: 'your@email.com', // Replace this with the email that submissions should be sent to
+  data: {
+    name: 'Jon Snow',
+    message: 'Hello World! This is my first Slapform submission.',
+    slap_subject: 'My Favorite Message',
+    slap_replyto: 'custom@replyto.com'
+    slap_debug: true,
+    slap_webhook: 'https://yourwebsite.com/webhook',
+    slap_honey: ''
+    /* These Slapform Name Triggers exist but aren't applicable to AJAX submissions */
+    // slap_redirect: 'https://yourwebsite.com',
+    // slap_captcha: false,
+  },
+})
 ```
 
 For a more in-depth overview of how these triggers work, please see the [Slapform name trigger documentation](https://slapform.com/docs/name-triggers/).
