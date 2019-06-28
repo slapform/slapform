@@ -1,32 +1,148 @@
-# Slapform
-A collection of Javascript utilities to streamline development.
+<div align="center">
+  <a href="https://cdn.itwcreativeworks.com/assets/slapform/images/logo/slapform-brandmark-blue-x.svg">
+    <img src="https://cdn.itwcreativeworks.com/assets/slapform/images/logo/slapform-brandmark-blue-x.svg">
+  </a>
+  <br>
+  <br>
 
-[Site](https://slapform.com) | [NPM Module](https://www.npmjs.com/package/slapform) | [GitHub Repo](https://github.com/slapform/slapform-npm)
+  ![GitHub package.json version](https://img.shields.io/github/package-json/v/slapform/slapform.svg)
 
-## Installation
+  ![David](https://img.shields.io/david/slapform/slapform.svg)
+  ![David](https://img.shields.io/david/dev/slapform/slapform.svg) <!-- ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/slapform/slapform.svg) -->
+  ![npm bundle size](https://img.shields.io/bundlephobia/min/slapform.svg)
+  ![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability-percentage/slapform/slapform.svg)
+  ![npm](https://img.shields.io/npm/dm/slapform.svg)
+  ![node](https://img.shields.io/node/v/slapform.svg)
+  ![Website](https://img.shields.io/website/https/itwcreativeworks.com.svg)
+  ![GitHub](https://img.shields.io/github/license/slapform/slapform.svg)
+  ![GitHub contributors](https://img.shields.io/github/contributors/slapform/slapform.svg)
+  ![GitHub last commit](https://img.shields.io/github/last-commit/slapform/slapform.svg)
 
-In a browser:
-```html
-<script src="slapform.js"></script>
-```
+  # Slapform
+  **slapform** is the official npm module of [Slapform](https://slapform.com), a backend form processing service for contact forms, payment forms, and much more--perfectly suited for static sites!
 
-Using npm:
+  [Site](https://slapform.com) | [NPM Module](https://www.npmjs.com/package/slapform) | [GitHub Repo](https://github.com/slapform/slapform)
+
+</div>
+
+## Slapform Works in Node AND browser environments
+Yes, this module works in both Node and browser environments, including compatability with [Webpack](https://www.npmjs.com/package/webpack) and [Browserify](https://www.npmjs.com/package/browserify)!
+
+## Features
+* Submit data via HTML forms, AJAX requests, or our custom npm module
+* Submissions are sent directly to your email
+* Access your submissions stored in our secure cloud server for up to 12 months
+* Spam protection
+
+## Install Slapform
+### 1. Install via npm
+Install with npm if you plan to use Slapform in a Node project or in the browser.
 ```shell
-$ npm i slapform
+npm install slapform
 ```
-Note: add --save if you are using npm < 5.0.0
+If you plan to install this way for a browser environment, you will probably need to use [Webpack](https://www.npmjs.com/package/webpack), [Browserify](https://www.npmjs.com/package/browserify), or a similar service to compile it.
 
-In Node.js:
+### 2. Install via CDN
+Install with CDN if you plan to use Slapform only in a browser environment.
+```html
+<script src="https://cdn.jsdelivr.net/npm/slapform/index.js"></script>
+```
+
+### 3. Use without installation
+You can also use Slapform without installing any additional libraries by using HTML forms or jQuery's AJAX. Please see the section below for details.
+
+## Using Slapform
+### 1. Via the npm module
 ```js
-// Load the full build.
-var slapform = require('slapform');
-
+  const slapform = new (require('slapform'));
+  slapform.submit({
+    account: 'your@email.com', // Replace this with the email that submissions should be sent to
+    data: { // The data you want submitted and emailed to you
+      name: 'Jon Snow',
+      message: 'Hello World!',
+    },
+  })
+  .success(function (response, data) { // This function runs only on success
+    console.log('Success!', response, data);
+  })
+  .error(function (response, error) { // This function runs only on error
+    console.log('Fail!', response, error);
+  })
+  .always(function (response) { // This function runs regardless of success or error
+    console.log('This always runs!', response);
+  });
 ```
 
-## Why Use this Library?
-The Slapform library makes it easy to extend the features of Slapform. Although developers were originally restricted to using name attributes on their HTML forms, this library allows you run server-side code. You may need to read the official Slapform docs to learn how to extend and [create a form backend](https://slapform.com/docs/getting-started/) using this module alongside name triggers.
+### 2. Via the CDN script
+```html
+<script src="https://cdn.jsdelivr.net/npm/slapform/index.js"></script>
 
-Overall this modules makes development of forms for your static websites easier.
+<script type="text/javascript">
+  var slapform = new Slapform(); // The script above exposes the global variable 'Slapform'
+  slapform.submit({
+    account: 'your@email.com', // Replace this with the email that submissions should be sent to
+    data: { // The data you want submitted and emailed to you
+      name: 'Jon Snow',
+      message: 'Hello World!',
+    },
+  })
+  .success(function (response, data) { // This function runs only on success
+    console.log('Success!', response, data);
+  })
+  .error(function (response, error) { // This function runs only on error
+    console.log('Fail!', response, error);
+  })
+  .always(function (response) { // This function runs regardless of success or error
+    console.log('This always runs!', response);
+  });  
+</script>
+```
 
-<!-- ## Projects Using this Library
-[JekyllUp](https://jekyllup.com): A website devoted to sharing the best Jekyll themes.<br> -->
+### 3. Via an HTML form
+You can use Slapform without installing this npm module or any other javascript simply by using an HTML form.
+```html
+<form method="POST"
+  action="https://api.slapform.com/your@email.com">
+  <input type="email" name="email">
+  <textarea type="text" name="message"></textarea>
+  <button type="submit">Submit</button>
+</form>
+<!-- Just copy/paste this on your site and change 'your@email.com' to your email! -->
+```
+
+## Extending Usability
+
+### Using Advanced Name Triggers
+In addition to sending simple data, you can take advantage of advanced name triggers to submit with your data. These will trigger special events on the server such as webhooks or the ability to process payments.
+```js
+  slapform.submit({
+    account: 'your@email.com', // Replace this with the email that submissions should be sent to
+    data: {
+      name: 'Jon Snow',
+      message: 'Hello World! This is my first Slapform submission.',
+      slap_subject: 'My Favorite Message',
+      slap_replyto: 'custom@replyto.com'
+      slap_debug: true,
+      slap_webhook: 'https://yourwebsite.com/webhook',
+      slap_honey: ''
+      /* These Slapform Name Triggers exist but aren't applicable to AJAX submissions */
+      // slap_redirect: 'https://yourwebsite.com',
+      // slap_captcha: false,
+    },
+  })
+```
+
+For a more in-depth overview of how these triggers work, please see the [Slapform name trigger documentation](https://slapform.com/docs/name-triggers/).
+
+## Final Words
+If you are still having difficulty, we would love for you to post
+a question to [the Slapform issues page](https://github.com/slapform/slapform/issues). It is much easier to answer questions that include your code and relevant files! So if you can provide them, we'd be extremely grateful (and more likely to help you find the answer!)
+
+## Projects Using this Library
+[Somiibo](https://somiibo.com/): A Social Media Bot with an open-source module library.
+[JekyllUp](https://jekyllup.com/): A website devoted to sharing the best Jekyll themes.
+[Slapform](https://slapform.com/): A backend processor for your HTML forms on static sites.
+[SoundGrail Music App](https://app.soundgrail.com/): A resource for producers, musicians, and DJs.
+[Hammock Report](https://hammockreport.com/): An API for exploring and listing backyard products.
+
+Ask us to have your project listed! :)

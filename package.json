@@ -1,14 +1,17 @@
 {
   "name": "slapform",
-  "version": "1.0.0",
-  "description": "The official library for Slapform. Develop your own modules for the Slapform Developer platform.",
+  "version": "1.0.1",
+  "description": "Easily send submission to Slapform, your favorite form backend service.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/slapform/slapform-npm"
+    "url": "git+https://github.com/slapform/slapform"
   },
   "keywords": [
     "slapform",
@@ -16,9 +19,9 @@
     "form backend"
   ],
   "author": "ITW Creative Works",
-  "license": "ISC",
+  "license": "CC-BY-4.0",
   "bugs": {
-    "url": "https://github.com/slapform/slapform-npm/issues"
+    "url": "https://github.com/slapform/slapform/issues"
   },
   "homepage": "https://slapform.com"
 }
