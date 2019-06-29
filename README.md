@@ -19,7 +19,7 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/slapform/slapform.svg)
 
 # Slapform
-**slapform** is the official npm module of [Slapform](https://slapform.com), a backend form processing service for contact forms, payment forms, and much more--perfectly suited for static sites!
+**slapform** is the official npm module of [Slapform](https://slapform.com), a backend form processing service for contact forms, payment forms, and much more—perfectly suited for static sites!
 
 [Site](https://slapform.com) | [NPM Module](https://www.npmjs.com/package/slapform) | [GitHub Repo](https://github.com/slapform/slapform)
 
@@ -33,6 +33,7 @@ Yes, this module works in both Node and browser environments, including compatab
 * Submissions are sent directly to your email
 * Access your submissions stored in our secure cloud server for up to 12 months
 * Spam protection
+* Zapier integration—connect Slapform with *any* service!
 
 ## Install Slapform
 ### 1. Install via npm
@@ -133,6 +134,9 @@ slapform.submit({
 ```
 
 For a more in-depth overview of how these triggers work, please see the [Slapform name trigger documentation](https://slapform.com/docs/name-triggers/).
+
+## What Can Slapform do?
+Slapform is a [form backend service](https://slapform.com) that you can use to submit data without managing a backend server. Slapform allows you to focus on the fun and productive parts of web development without worrying about building another form processing backend. Slapform works perfect as a [Jekyll contact form](hhttps://slapform.com/docs/make-a-jekyll-contact-form/) or a [static site contact form](https://slapform.com/).
 
 ## Final Words
 If you are still having difficulty, we would love for you to post
