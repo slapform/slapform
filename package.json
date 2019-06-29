@@ -19,7 +19,7 @@
     "form backend"
   ],
   "author": "ITW Creative Works",
-  "license": "CC-BY-4.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/slapform/slapform/issues"
   },
