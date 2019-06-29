@@ -36,24 +36,24 @@ Yes, this module works in both Node and browser environments, including compatab
 * Zapier integration—connect Slapform with *any* service!
 
 ## Install Slapform
-### 1. Install via npm
+### Install via npm
 Install with npm if you plan to use Slapform in a Node project or in the browser.
 ```shell
 npm install slapform
 ```
 If you plan to install this way for a browser environment, you will probably need to use [Webpack](https://www.npmjs.com/package/webpack), [Browserify](https://www.npmjs.com/package/browserify), or a similar service to compile it.
 
-### 2. Install via CDN
+### Install via CDN
 Install with CDN if you plan to use Slapform only in a browser environment.
 ```html
 <script src="https://cdn.jsdelivr.net/npm/slapform/index.js"></script>
 ```
 
-### 3. Use without installation
+### Use without installation
 You can also use Slapform without installing any additional libraries by using HTML forms or jQuery's AJAX. Please see the section below for details.
 
 ## Using Slapform
-### 1. Via the npm module
+### Via the npm module
 ```js
 const slapform = new (require('slapform'));
 slapform.submit({
@@ -74,7 +74,7 @@ slapform.submit({
 });
 ```
 
-### 2. Via the CDN script
+### Via the CDN script
 ```html
 <script src="https://cdn.jsdelivr.net/npm/slapform/index.js"></script>
 
@@ -99,7 +99,7 @@ slapform.submit({
 </script>
 ```
 
-### 3. Via an HTML form
+### Via an HTML form
 You can use Slapform without installing this npm module or any other javascript simply by using an HTML form.
 ```html
 <form method="POST"
@@ -111,7 +111,7 @@ You can use Slapform without installing this npm module or any other javascript 
 <!-- Just copy/paste this on your site and change 'your@email.com' to your email! -->
 ```
 
-## Extending Usability
+## Extending Capabilities
 
 ### Using Advanced Name Triggers
 In addition to sending simple data, you can take advantage of advanced name triggers to submit with your data. These will trigger special events on the server such as webhooks or the ability to process payments.
