@@ -123,7 +123,7 @@ slapform.submit({
     message: 'Hello World! This is my first Slapform submission.',
     slap_subject: 'My Favorite Message',
     slap_replyto: 'custom@replyto.com'
-    slap_debug: true,
+    slap_debug: false,
     slap_webhook: 'https://yourwebsite.com/webhook',
     slap_honey: ''
     /* These Slapform Name Triggers exist but aren't applicable to AJAX submissions */
