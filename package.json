@@ -1,6 +1,6 @@
 {
   "name": "slapform",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Easily send submission to Slapform, your favorite form backend service.",
   "main": "index.js",
   "scripts": {
