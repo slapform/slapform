@@ -187,7 +187,7 @@
 
     if ((typeof window == 'undefined') || (false)) {
       response.meta.status = 'fail';
-      response.meta.errors.push({type: 'error', msg: 'This method is only available in browser environments.'});
+      response.meta.errors.push({type: 'error', msg: 'This method is only available in browser environments.', code: ''});
       return response;
     }
     try {
@@ -198,7 +198,7 @@
       var t_params = getParameters(payload.url);
       if (typeof t_params.meta === 'undefined') {
        response.meta.status = 'fail';
-       response.meta.errors.push({type: 'error', msg: 'Could not detect query string in URL: ' + payload.url});
+       response.meta.errors.push({type: 'error', msg: 'Could not detect query string in URL: ' + payload.url, code: ''});
        return response;
      }
      response = {

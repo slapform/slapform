@@ -136,7 +136,7 @@ slapform.submit({
 For a more in-depth overview of how these triggers work, please see the [Slapform name trigger documentation](https://slapform.com/docs/name-triggers/).
 
 ## What Can Slapform do?
-Slapform is a [form backend service](https://slapform.com) that you can use to submit data without managing a backend server. Slapform allows you to focus on the fun and productive parts of web development without worrying about building another form processing backend. Slapform works perfect as a [Jekyll contact form](hhttps://slapform.com/docs/make-a-jekyll-contact-form/) or a [static site contact form](https://slapform.com/).
+Slapform is a [form backend service](https://slapform.com) that you can use to submit data without managing a backend server. Slapform allows you to focus on the fun and productive parts of web development without worrying about building another form processing backend. Slapform works perfect as a [Jekyll contact form](https://slapform.com/docs/make-a-jekyll-contact-form/) or a [static site contact form](https://slapform.com/).
 
 ## Final Words
 If you are still having difficulty, we would love for you to post
