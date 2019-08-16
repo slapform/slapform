@@ -129,7 +129,7 @@ slapform.submit({
     /* These Slapform Name Triggers exist but aren't applicable to AJAX submissions */
     // slap_redirect: 'https://yourwebsite.com',
     // slap_captcha: false,
-  },
+  }
 })
 ```
 

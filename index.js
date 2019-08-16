@@ -97,9 +97,10 @@
       var XHR = window.XMLHttpRequest || XMLHttpRequest || ActiveXObject;
       var request = new XHR('MSXML2.XMLHTTP.3.0');
 
-      request.open('POST', 'https://api.slapform.com', true);
+      request.open('POST', 'https://api.slapform.com' + '/' + payload.account, true);
       request.setRequestHeader('Content-type', contentType);
       request.setRequestHeader('Accept', accept);
+      request.setRequestHeader('Access-Control-Allow-Origin', '*');
       request.onreadystatechange = function () {
         var req;
         if (request.readyState === 4) {
@@ -170,6 +171,7 @@
     }
 
   }
+
 
   Slapform.prototype.getResponse = function(payload) {
     var response = {
