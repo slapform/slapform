@@ -146,14 +146,18 @@
       };
 
       var globalRes;
+      var full = '';
       var req = https.request(options, function(res) {
         globalRes = res;
-        // console.log('statusCode:', res.statusCode);
-        // console.log('headers:', res.headers);
-        res.on('data', function(d) {
-          var resData = JSON.parse(d.toString());
+
+        res.on('data', function(chunk) {
+          full += chunk;
+        });
+        res.on('end', function() {
+          // console.log('END > ', full.toString());
+          var resData = JSON.parse(full.toString());
           if (resData && resData.meta && resData.meta.status == 'success') {
-            methods.success.call(methods, res, JSON.parse(d.toString()));
+            methods.success.call(methods, res, JSON.parse(full.toString()));
           } else {
             methods.error.call(methods, res, resData.meta.errors);
             loopErrors(resData.meta.errors);
@@ -166,6 +170,14 @@
         methods.error.call(methods, {}, e);
         methods.always.call(methods, globalRes);
       });
+
+      if ((contentType.indexOf('json') > -1)) {
+        try {
+          payload.data = JSON.stringify(payload.data);
+        } catch (e) {
+          console.error('Could not stringify data.')
+        }
+      }
       req.write(payload.data);
       req.end();
       return atomXHR;
