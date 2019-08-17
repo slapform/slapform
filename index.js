@@ -100,7 +100,8 @@
       request.open('POST', 'https://api.slapform.com' + '/' + payload.account, true);
       request.setRequestHeader('Content-type', contentType);
       request.setRequestHeader('Accept', accept);
-      request.setRequestHeader('Access-Control-Allow-Origin', '*');
+      // request.setRequestHeader('Referer', window && window.location ? window.location.href : '' );
+      // request.setRequestHeader('Access-Control-Allow-Origin', '*');
       request.onreadystatechange = function () {
         var req;
         if (request.readyState === 4) {
