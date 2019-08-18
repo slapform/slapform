@@ -76,7 +76,6 @@ slapform.submit({
 
 ### Via the CDN script
 ```html
-<!-- <script src="https://cdn.jsdelivr.net/npm/slapform/index.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/slapform"></script>
 
 <script type="text/javascript">
