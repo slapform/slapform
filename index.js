@@ -186,7 +186,6 @@
 
   }
 
-
   Slapform.prototype.getResponse = function(payload) {
     var response = {
       meta: {
