@@ -120,13 +120,14 @@
         }
       };
 
-      if ((contentType.indexOf('json') > -1)) {
-        try {
-          payload.data = JSON.stringify(payload.data);
-        } catch (e) {
-          console.error('AJAX could not stringify data.')
-        }
-      }
+      // if ((contentType.indexOf('json') > -1)) {
+      //   try {
+      //     payload.data = JSON.stringify(payload.data);
+      //   } catch (e) {
+      //     console.error('AJAX could not stringify data.')
+      //   }
+      // }
+      payload.data = stringifyData(payload.data);
 
       request.send(payload.data);
       return atomXHR;
@@ -172,18 +173,31 @@
         methods.always.call(methods, globalRes);
       });
 
-      if ((contentType.indexOf('json') > -1)) {
-        try {
-          payload.data = JSON.stringify(payload.data);
-        } catch (e) {
-          console.error('Could not stringify data.')
-        }
-      }
+      // if ((contentType.indexOf('json') > -1)) {
+      //   try {
+      //     payload.data = JSON.stringify(payload.data);
+      //   } catch (e) {
+      //     console.error('Could not stringify data.')
+      //   }
+      // }
+      payload.data = stringifyData(payload.data);
       req.write(payload.data);
       req.end();
       return atomXHR;
     }
 
+  }
+
+  function stringifyData(data) {
+    // if ((contentType.indexOf('json') > -1)) {
+    // var response = data;
+      try {
+        data = JSON.stringify(data);
+      } catch (e) {
+        console.error('Could not stringify data.');
+      }
+      return data;
+    // }
   }
 
   Slapform.prototype.getResponse = function(payload) {
