@@ -47,7 +47,6 @@ If you plan to install this way for a browser environment, you will probably nee
 Install with CDN if you plan to use Slapform only in a browser environment.
 ```html
 <script src="https://cdn.jsdelivr.net/npm/slapform"></script>
-
 ```
 
 ### Use without installation

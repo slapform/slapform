@@ -61,6 +61,7 @@
     }
   }
 
+
   Slapform.prototype.submit = function(payload) {
     var methods = {
       success: function () {},
@@ -119,6 +120,7 @@
           methods.always.call(methods, request);
         }
       };
+
 
       // if ((contentType.indexOf('json') > -1)) {
       //   try {
