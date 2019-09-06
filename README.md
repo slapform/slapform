@@ -100,7 +100,7 @@ slapform.submit({
 ```
 
 ### Via an HTML form
-You can use Slapform without installing this npm module or any other javascript simply by using an HTML form.
+You can use Slapform without installing this npm module or any other javascript simply by using an HTML form and pointing the `action` to our endpoint!
 ```html
 <form method="POST"
   action="https://api.slapform.com/your@email.com">
