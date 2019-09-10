@@ -41,7 +41,7 @@ Install with npm if you plan to use Slapform in a Node project or in the browser
 ```shell
 npm install slapform
 ```
-If you plan to install this way for a browser environment, you will probably need to use [Webpack](https://www.npmjs.com/package/webpack), [Browserify](https://www.npmjs.com/package/browserify), or a similar service to compile it.
+If you plan to use `slapform` in a browser environment, you will probably need to use [Webpack](https://www.npmjs.com/package/webpack), [Browserify](https://www.npmjs.com/package/browserify), or a similar service to compile it.
 
 ### Install via CDN
 Install with CDN if you plan to use Slapform only in a browser environment.

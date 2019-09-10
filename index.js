@@ -21,9 +21,11 @@
 
   this.extra = '8'; //@@@ Delete later
 
-  if ((typeof window !== 'undefined') && (window.XMLHttpRequest || XMLHttpRequest || ActiveXObject)) {
-    environment = 'browser';
-  }
+  // if ((typeof window !== 'undefined') && (window.XMLHttpRequest || XMLHttpRequest || ActiveXObject)) {
+  //   environment = 'browser';
+  // }
+  environment = (Object.prototype.toString.call(typeof process !== 'undefined' ? process : 0) === '[object process]') ? 'node' : 'browser';
+
   if (environment == 'browser') {
     registerName();
   }
@@ -52,15 +54,15 @@
     return [result, req];
   };
 
-  // var parseDELETE = function (req) {
-  //   var result;
-  //   try {
-  //     result = JSON.parse(req.responseText);
-  //   } catch (e) {
-  //     result = req.responseText;
-  //   }
-  //   return [result, req];
-  // };
+  var parseDELETE = function (req) {
+    var result;
+    try {
+      result = JSON.parse(req.responseText);
+    } catch (e) {
+      result = req.responseText;
+    }
+    return [result, req];
+  };
 
   function loopErrors(errors) {
     for (var i = 0; i < errors.length; i++) {
