@@ -19,7 +19,7 @@
   // attach properties to the exports object to define
   // the exported module properties.
 
-  this.extra = '12'; //@@@ Delete later
+  this.extra = '15'; //@@@ Delete later
 
   // if ((typeof window !== 'undefined') && (window.XMLHttpRequest || XMLHttpRequest || ActiveXObject)) {
   //   environment = 'browser';

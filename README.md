@@ -1,4 +1,4 @@
-<p align="center">
+<div align="center">
   <a href="https://cdn.itwcreativeworks.com/assets/slapform/images/logo/slapform-brandmark-blue-x.svg">
     <img src="https://cdn.itwcreativeworks.com/assets/slapform/images/logo/slapform-brandmark-blue-x.svg">
   </a>
@@ -23,7 +23,7 @@
 
 [Site](https://slapform.com) | [NPM Module](https://www.npmjs.com/package/slapform) | [GitHub Repo](https://github.com/slapform/slapform)
 
-</p>
+</div>
 
 ## Slapform Works in Node AND browser environments
 Yes, this module works in both Node and browser environments, including compatability with [Webpack](https://www.npmjs.com/package/webpack) and [Browserify](https://www.npmjs.com/package/browserify)!
