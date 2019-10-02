@@ -19,7 +19,7 @@
   // attach properties to the exports object to define
   // the exported module properties.
 
-  this.extra = '15'; //@@@ Delete later
+  this.extra = '17'; //@@@ Delete later
 
   // if ((typeof window !== 'undefined') && (window.XMLHttpRequest || XMLHttpRequest || ActiveXObject)) {
   //   environment = 'browser';
@@ -54,12 +54,12 @@
     return [result, req];
   };
 
-  var debugDELETE = function (req) {
-    for (var i = 0; i < req.length; i++) {
-      console.log(req[i]);
-    }
-    return false;
-  };
+  // var debugDELETE = function (req) {
+  //   for (var i = 0; i < req.length; i++) {
+  //     console.log(req[i]);
+  //   }
+  //   return false;
+  // };
 
   function loopErrors(errors) {
     for (var i = 0; i < errors.length; i++) {
