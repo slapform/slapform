@@ -43,25 +43,32 @@ npm install slapform
 ```
 If you plan to use `slapform` in a browser environment, you will probably need to use [Webpack](https://www.npmjs.com/package/webpack), [Browserify](https://www.npmjs.com/package/browserify), or a similar service to compile it.
 
+```js
+const slapform = new (require('slapform'));
+```
+
 ### Install via CDN
 Install with CDN if you plan to use Slapform only in a browser environment.
 ```html
 <script src="https://cdn.jsdelivr.net/npm/slapform"></script>
+<script type="text/javascript">
+  var slapform = new Slapform(); // The script above exposes the global variable 'Slapform'
+</script>
 ```
 
 ### Use without installation
 You can also use Slapform without installing any additional libraries by using HTML forms or jQuery's AJAX. Please see the section below for details.
 
 ## Using Slapform
-### Via the npm module
+### Via the npm module or the CDN
+After you have followed the install step, you can start using `slapform` with your website or software!
 ```js
-const slapform = new (require('slapform'));
 slapform.submit({
   account: 'your@email.com', // Replace this with the email that submissions should be sent to
   data: { // The data you want submitted and emailed to you
     name: 'Jon Snow',
-    message: 'Hello World!',
-  },
+    message: 'Hello World!'
+  }
 })
 .success(function (response, data) { // This function runs only on success
   console.log('Success!', response, data);
@@ -72,31 +79,6 @@ slapform.submit({
 .always(function (response) { // This function runs regardless of success or error
   console.log('This always runs!', response);
 });
-```
-
-### Via the CDN script
-```html
-<script src="https://cdn.jsdelivr.net/npm/slapform"></script>
-
-<script type="text/javascript">
-  var slapform = new Slapform(); // The script above exposes the global variable 'Slapform'
-  slapform.submit({
-    account: 'your@email.com', // Replace this with the email that submissions should be sent to
-    data: { // The data you want submitted and emailed to you
-      name: 'Jon Snow',
-      message: 'Hello World!',
-    },
-  })
-  .success(function (response, data) { // This function runs only on success
-    console.log('Success!', response, data);
-  })
-  .error(function (response, error) { // This function runs only on error
-    console.log('Fail!', response, error);
-  })
-  .always(function (response) { // This function runs regardless of success or error
-    console.log('This always runs!', response);
-  });  
-</script>
 ```
 
 ### Via an HTML form
@@ -112,7 +94,6 @@ You can use Slapform without installing this npm module or any other javascript 
 ```
 
 ## Extending Capabilities
-
 ### Using Advanced Name Triggers
 In addition to sending simple data, you can take advantage of advanced name triggers to submit with your data. These will trigger special events on the server such as webhooks or the ability to process payments.
 ```js
@@ -124,7 +105,7 @@ slapform.submit({
     slap_subject: 'My Favorite Message',
     slap_replyto: 'custom@replyto.com'
     slap_debug: false,
-    slap_webhook: 'https://yourwebsite.com/webhook',
+    slap_webhook: 'https://yourwebsite.com/webhook', // We'll send a POST request with the submission data to this URL!
     slap_honey: ''
     /* These Slapform Name Triggers exist but aren't applicable to AJAX submissions */
     // slap_redirect: 'https://yourwebsite.com',

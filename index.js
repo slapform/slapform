@@ -1,30 +1,22 @@
 (function (root, factory) {
+  // https://github.com/umdjs/umd/blob/master/templates/returnExports.js
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    // define(['b'], factory);
     define([], factory);
   } else if (typeof module === 'object' && module.exports) {
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
-    // module.exports = factory(require('b'));
-    module.exports = factory('node');
+    module.exports = factory();
   } else {
     // Browser globals (root is window)
-    // root.returnExports = factory(root.b);
-    root.returnExports = factory('browser');
+    root.returnExports = factory();
   }
-}(this, function (environment) {
-  environment = environment || 'node';
-  // attach properties to the exports object to define
-  // the exported module properties.
+}(typeof self !== 'undefined' ? self : this, function () {
 
   this.extra = '17'; //@@@ Delete later
 
-  // if ((typeof window !== 'undefined') && (window.XMLHttpRequest || XMLHttpRequest || ActiveXObject)) {
-  //   environment = 'browser';
-  // }
-  environment = (Object.prototype.toString.call(typeof process !== 'undefined' ? process : 0) === '[object process]') ? 'node' : 'browser';
+  var environment = (Object.prototype.toString.call(typeof process !== 'undefined' ? process : 0) === '[object process]') ? 'node' : 'browser';
 
   if (environment == 'browser') {
     registerName();
@@ -46,6 +38,7 @@
 
   var parse = function (req) {
     var result;
+    // console.log('RAW', req.responseText);
     try {
       result = JSON.parse(req.responseText);
     } catch (e) {
@@ -99,6 +92,8 @@
     payload.environment = payload.environment || environment || 'browser';
     payload.data = payload.data || {};
     payload.account = payload.account || payload.data.slap_email || payload.data.slap_account || '';
+    payload.endpoint = payload.endpoint || 'https://api.slapform.com';
+    payload.promise = payload.promise || false; //IMPLEMENT
 
     var contentType = 'application/json';
     var accept = 'application/json';
@@ -109,11 +104,11 @@
       var XHR = window.XMLHttpRequest || XMLHttpRequest || ActiveXObject;
       var request = new XHR('MSXML2.XMLHTTP.3.0');
 
-      request.open('POST', 'https://api.slapform.com' + '/' + payload.account, true);
+      request.open('POST', payload.endpoint + '/' + payload.account, true);
       request.setRequestHeader('Content-type', contentType);
       request.setRequestHeader('Accept', accept);
       // request.setRequestHeader('Referer', window && window.location ? window.location.href : '' );
-      request.setRequestHeader('Access-Control-Allow-Origin', '*');
+      // request.setRequestHeader('Access-Control-Allow-Origin', '*');
       request.onreadystatechange = function () {
         var req;
         if (request.readyState === 4) {
@@ -168,10 +163,14 @@
           full += chunk;
         });
         res.on('end', function() {
-          // console.log('END > ', full.toString());
-          var resData = JSON.parse(full.toString());
+          var resData;
+          try {
+            resData = JSON.parse(full.toString());
+          } catch (e) {
+            resData = full.toString();
+          }
           if (resData && resData.meta && resData.meta.status == 'success') {
-            methods.success.call(methods, res, JSON.parse(full.toString()));
+            methods.success.call(methods, res, resData);
           } else {
             methods.error.call(methods, res, resData.meta.errors);
             loopErrors(resData.meta.errors);
@@ -273,6 +272,9 @@
     return params;
   }
 
+  // Just return a value to define the module export.
+  // This example returns an object, but the module
+  // can return a function as the exported value.
   return Slapform; // Enable if using UMD
-  // module.exports = Slapform; // Enable if using regular module.exports
+
 }));
