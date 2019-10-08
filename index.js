@@ -117,8 +117,9 @@
             if (req[0] && req[0].meta && req[0].meta.status == 'success') {
               methods.success.call(methods, request, req[0]);
             } else {
-              methods.error.call(methods, request, req[0].meta.errors);
-              loopErrors(req[0].meta.errors);
+              var errors = req[0].meta && req[0].meta.errors ? req[0].meta.errors : [];
+              methods.error.call(methods, request, errors);
+              loopErrors(errors);
             }
           } else {
             methods.error.call(methods, request, request.statusText);

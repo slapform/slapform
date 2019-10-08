@@ -1,6 +1,6 @@
 {
   "name": "slapform",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Easily send submission to Slapform, your favorite form backend service.",
   "main": "index.js",
   "scripts": {
@@ -14,8 +14,20 @@
     "url": "git+https://github.com/slapform/slapform"
   },
   "keywords": [
+    "html",
     "slapform",
+    "html-form",
+    "html-forms",
     "html forms",
+    "form",
+    "forms",
+    "form-builder",
+    "form builder",
+    "form-builder-api",
+    "form builder api",
+    "form-generator",
+    "form generator",
+    "formbuilder",
     "form backend"
   ],
   "author": "ITW Creative Works",
