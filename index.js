@@ -95,8 +95,10 @@
     payload.endpoint = payload.endpoint || 'https://api.slapform.com';
     payload.promise = payload.promise || false; //IMPLEMENT
 
-    var contentType = 'application/json';
-    var accept = 'application/json';
+    // var contentType = 'application/json';
+    // var accept = 'application/json';
+    var contentType = 'application/json; charset=utf-8';
+    var accept = 'application/json, text/javascript, */*; q=0.01';
 
     if (payload.environment == 'browser') {
 
