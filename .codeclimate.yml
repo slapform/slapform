@@ -3,9 +3,9 @@ checks:
 #   argument-count:
 #     config:
 #       threshold: 4
-#   complex-logic:
-#     config:
-#       threshold: 4
+  complex-logic:
+    config:
+      threshold: 6
 #   file-lines:
 #     config:
 #       threshold: 250
@@ -30,4 +30,3 @@ checks:
   # identical-code:
   #   config:
   #     threshold: # language-specific defaults. an override will affect all languages.
-

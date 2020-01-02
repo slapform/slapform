@@ -270,67 +270,6 @@
     }, 100);
   }
 
-  // Slapform.prototype.getResponse = function(payload) {
-  //   var response = {
-  //     meta: {
-  //       status: 'success',
-  //       errors: [],
-  //       referrer: ''
-  //     },
-  //     data: {},
-  //     triggers: {}
-  //   };
-  //   payload = payload || {};
-  //   payload.url = payload.url || window.location.href;
-  //   payload.options = payload.options || {};
-  //
-  //   if ((typeof window == 'undefined') || (false)) {
-  //     response.meta.status = 'fail';
-  //     response.meta.errors.push({type: 'error', msg: 'This method is only available in browser environments.', code: ''});
-  //     return response;
-  //   }
-  //   try {
-  //     /* GOTTEN FROM web-manager/query.js */
-  //     payload.url = payload.url.replace(/amp;/g,"");
-  //     payload.url = decodeURIComponent(payload.url);
-  //     var urlPlain = payload.url.split('?')[0] || payload.url;
-  //     var t_params = getParameters(payload.url);
-  //     if (typeof t_params.meta === 'undefined') {
-  //      response.meta.status = 'fail';
-  //      response.meta.errors.push({type: 'error', msg: 'Could not detect query string in URL: ' + payload.url, code: ''});
-  //      return response;
-  //    }
-  //    response = {
-  //      meta: JSON.parse(t_params.meta || "{}"),
-  //      data: JSON.parse(t_params.data || "{}"),
-  //      triggers: JSON.parse(t_params.triggers || "{}")
-  //    }
-  //   } catch (e) {
-  //     response.meta.status = 'fail';
-  //     response.meta.errors.push({type: 'error', msg: e});
-  //     return response;
-  //   }
-  //
-  //   return response;
-  // }
-
-  // function determineEnvironment() {
-  //
-  // }
-
-  // function getParameters(url) {
-  //   var params = {}, queries, temp, i, l;
-  //   // queries = url.split('?')[1].split('&') || [];
-  //   queries = url.split('?')[1];
-  //   queries = (queries) ? queries.split('&') : [];
-  //   for ( i = 0, l = queries.length; i < l; i++ ) {
-  //     temp = queries[i].split('=');
-  //     params[temp[0]] = temp[1];
-  //     // params[temp[0]] = (typeof temp[1] !== 'undefined') ? temp[1].replace(/\+/g, ' ') : "";
-  //   };
-  //   return params;
-  // }
-
   // Just return a value to define the module export.
   // This example returns an object, but the module
   // can return a function as the exported value.
