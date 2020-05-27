@@ -5,21 +5,21 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/package-json/v/itw-creative-works/slapform.svg">
+  <img src="https://img.shields.io/github/package-json/v/slapform/slapform.svg">
   <br>
-  <img src="https://img.shields.io/david/itw-creative-works/slapform.svg">
-  <img src="https://img.shields.io/david/dev/itw-creative-works/slapform.svg">
+  <img src="https://img.shields.io/david/slapform/slapform.svg">
+  <img src="https://img.shields.io/david/dev/slapform/slapform.svg">
   <img src="https://img.shields.io/bundlephobia/min/slapform.svg">
-  <img src="https://img.shields.io/codeclimate/maintainability-percentage/itw-creative-works/slapform.svg">
+  <img src="https://img.shields.io/codeclimate/maintainability-percentage/slapform/slapform.svg">
   <img src="https://img.shields.io/npm/dm/slapform.svg">
   <img src="https://img.shields.io/node/v/slapform.svg">
   <img src="https://img.shields.io/website/https/itwcreativeworks.com.svg">
-  <img src="https://img.shields.io/github/license/itw-creative-works/slapform.svg">
-  <img src="https://img.shields.io/github/contributors/itw-creative-works/slapform.svg">
-  <img src="https://img.shields.io/github/last-commit/itw-creative-works/slapform.svg">
+  <img src="https://img.shields.io/github/license/slapform/slapform.svg">
+  <img src="https://img.shields.io/github/contributors/slapform/slapform.svg">
+  <img src="https://img.shields.io/github/last-commit/slapform/slapform.svg">
   <br>
   <br>
-  <a href="https://slapform.com">Site</a> | <a href="https://www.npmjs.com/package/slapform">NPM Module</a> | <a href="https://github.com/itw-creative-works/slapform">GitHub Repo</a>
+  <a href="https://slapform.com">Site</a> | <a href="https://www.npmjs.com/package/slapform">NPM Module</a> | <a href="https://github.com/slapform/slapform">GitHub Repo</a>
   <br>
   <br>
   <strong>slapform</strong> is the official npm module of <a href="https://slapform.com">Slapform</a>, a backend form processing service for contact forms, payment forms, and much more—perfectly suited for static sites!
