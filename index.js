@@ -18,18 +18,6 @@
 
   var environment = (Object.prototype.toString.call(typeof process !== 'undefined' ? process : 0) === '[object process]') ? 'node' : 'browser';
 
-  if (environment == 'browser') {
-    registerName();
-  }
-
-  function registerName() {
-    // console.log('Registered slapform to window!');
-    try {
-      window.Slapform = Slapform;
-    } catch (e) {
-    }
-  }
-
   function Slapform(account, options) {
     this.account = account || '';
     this.options = options || {};
@@ -57,7 +45,7 @@
   function loopErrors(errors) {
     for (var i = 0; i < errors.length; i++) {
       var output = '[' + errors[i].type +' ' + errors[i].code + ']: ' + errors[i].msg;
-      if (errors[i].type == 'Warning') {
+      if (errors[i].type === 'Warning') {
         console.warn(output);
       } else {
         console.error(output);
@@ -100,7 +88,7 @@
     var contentType = 'application/json; charset=utf-8';
     var accept = 'application/json, text/javascript, */*; q=0.01';
 
-    if (payload.environment == 'browser') {
+    if (payload.environment === 'browser') {
 
       // console.log('Slapform: browser');
       var XHR = window.XMLHttpRequest || XMLHttpRequest || ActiveXObject;
@@ -116,7 +104,7 @@
         if (request.readyState === 4) {
           req = parse(request);
           if (request.status >= 200 && request.status < 300) {
-            if (req[0] && req[0].meta && req[0].meta.status == 'success') {
+            if (req[0] && req[0].meta && req[0].meta.status === 'success') {
               methods.success.call(methods, request, req[0]);
             } else {
               var errors = req[0].meta && req[0].meta.errors ? req[0].meta.errors : [];
@@ -172,7 +160,7 @@
           } catch (e) {
             resData = full.toString();
           }
-          if (resData && resData.meta && resData.meta.status == 'success') {
+          if (resData && resData.meta && resData.meta.status === 'success') {
             methods.success.call(methods, res, resData);
           } else {
             methods.error.call(methods, res, resData.meta.errors);
@@ -268,6 +256,14 @@
 
       }
     }, 100);
+  }
+
+  // Register
+  if (environment === 'browser') {
+    try {
+      window.Slapform = Slapform;
+    } catch (e) {
+    }
   }
 
   // Just return a value to define the module export.
