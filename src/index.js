@@ -17,6 +17,8 @@
   this.extra = '17'; //@@@ Delete later
 
   var environment = (Object.prototype.toString.call(typeof process !== 'undefined' ? process : 0) === '[object process]') ? 'node' : 'browser';
+  var SOURCE = 'library';
+  var VERSION = '{version}';
 
   function Slapform(account, options) {
     this.account = account || '';
@@ -81,112 +83,127 @@
     payload.data = payload.data || {};
     payload.account = payload.account || payload.data.slap_email || payload.data.slap_account || '';
     payload.endpoint = payload.endpoint || 'https://api.slapform.com';
-    payload.promise = payload.promise || false; //IMPLEMENT
 
     // var contentType = 'application/json';
     // var accept = 'application/json';
     var contentType = 'application/json; charset=utf-8';
     var accept = 'application/json, text/javascript, */*; q=0.01';
 
-    if (payload.environment === 'browser') {
+    // Set values
+    payload.data._version = VERSION;
+    payload.data._source = SOURCE;
 
-      // console.log('Slapform: browser');
-      var XHR = window.XMLHttpRequest || XMLHttpRequest || ActiveXObject;
-      var request = new XHR('MSXML2.XMLHTTP.3.0');
+    return new Promise(function(resolve, reject) {
+      if (payload.environment === 'browser') {
 
-      request.open('POST', payload.endpoint + '/' + payload.account, true);
-      request.setRequestHeader('Content-type', contentType);
-      request.setRequestHeader('Accept', accept);
-      // request.setRequestHeader('Referer', window && window.location ? window.location.href : '' );
-      // request.setRequestHeader('Access-Control-Allow-Origin', '*');
-      request.onreadystatechange = function () {
-        var req;
-        if (request.readyState === 4) {
-          req = parse(request);
-          if (request.status >= 200 && request.status < 300) {
-            if (req[0] && req[0].meta && req[0].meta.status === 'success') {
-              methods.success.call(methods, request, req[0]);
+        // console.log('Slapform: browser');
+        var XHR = window.XMLHttpRequest || XMLHttpRequest || ActiveXObject;
+        var request = new XHR('MSXML2.XMLHTTP.3.0');
+
+        request.open('POST', payload.endpoint + '/' + payload.account, true);
+        request.setRequestHeader('Content-type', contentType);
+        request.setRequestHeader('Accept', accept);
+        // request.setRequestHeader('Referer', window && window.location ? window.location.href : '' );
+        // request.setRequestHeader('Access-Control-Allow-Origin', '*');
+        request.onreadystatechange = function () {
+          var req;
+          if (request.readyState === 4) {
+            req = parse(request);
+            if (request.status >= 200 && request.status < 300) {
+              if (req[0] && req[0].meta && req[0].meta.status === 'success') {
+                return resolve(req[0]);
+              } else {
+                var errors = req[0].meta && req[0].meta.errors ? req[0].meta.errors : [];
+                loopErrors(errors);
+                return reject(req[0]);
+              }
             } else {
-              var errors = req[0].meta && req[0].meta.errors ? req[0].meta.errors : [];
-              methods.error.call(methods, request, errors);
-              loopErrors(errors);
+              // methods.error.call(methods, request, request.statusText);
+              return reject(generateErrorResponse(request.statusText));
             }
-          } else {
-            methods.error.call(methods, request, request.statusText);
           }
-          methods.always.call(methods, request);
+        };
+
+        // if ((contentType.indexOf('json') > -1)) {
+        //   try {
+        //     payload.data = JSON.stringify(payload.data);
+        //   } catch (e) {
+        //     console.error('AJAX could not stringify data.')
+        //   }
+        // }
+        payload.data = stringifyData(payload.data);
+
+        request.send(payload.data);
+      } else {
+        // console.log('Slapform: node');
+        var url = require('url');
+        var parsedURL = url.parse(payload.endpoint);
+        var request = parsedURL.protocol === 'https:' ? require('https') : require('http');
+
+        var options = {
+          // hostname: 'api.slapform.com',
+          hostname: parsedURL.hostname,
+          // hostname: 'api.INCORRECTTEST.com',
+          // port: 443,
+          path: '/' + payload.account,
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            // 'Content-Length': Buffer.byteLength(post_data)
+          }
+        };
+        if (parsedURL.port) {
+          options.port = parsedURL.port;
         }
-      };
 
-      // if ((contentType.indexOf('json') > -1)) {
-      //   try {
-      //     payload.data = JSON.stringify(payload.data);
-      //   } catch (e) {
-      //     console.error('AJAX could not stringify data.')
-      //   }
-      // }
-      payload.data = stringifyData(payload.data);
+        // console.log('----parsedURL', parsedURL);
 
-      request.send(payload.data);
-      return atomXHR;
-    } else {
-      // console.log('Slapform: node');
-      var https = require('https');
-      var options = {
-        hostname: 'api.slapform.com',
-        // hostname: 'api.INCORRECTTEST.com',
-        // port: 443,
-        path: '/' + payload.account,
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          // 'Content-Length': Buffer.byteLength(post_data)
-        }
-      };
+        // var globalRes;
+        var full = '';
+        var req = request.request(options, function(res) {
+          // globalRes = res;
 
-      var globalRes;
-      var full = '';
-      var req = https.request(options, function(res) {
-        globalRes = res;
+          res.on('data', function(chunk) {
+            full += chunk;
+          });
+          res.on('end', function() {
+            var resData;
+            try {
+              resData = JSON.parse(full.toString());
+            } catch (e) {
+              resData = full.toString();
+            }
+            if (resData && resData.meta && resData.meta.status === 'success') {
+              // methods.success.call(methods, res, resData);
+              return resolve(resData);
+            } else {
+              // methods.error.call(methods, res, resData.meta.errors);
+              loopErrors(resData.meta.errors);
+              return reject(resData);
+            }
+            // methods.always.call(methods, globalRes);
+          });
 
-        res.on('data', function(chunk) {
-          full += chunk;
         });
-        res.on('end', function() {
-          var resData;
-          try {
-            resData = JSON.parse(full.toString());
-          } catch (e) {
-            resData = full.toString();
-          }
-          if (resData && resData.meta && resData.meta.status === 'success') {
-            methods.success.call(methods, res, resData);
-          } else {
-            methods.error.call(methods, res, resData.meta.errors);
-            loopErrors(resData.meta.errors);
-          }
-          methods.always.call(methods, globalRes);
+        req.on('error', function(e) {
+          return reject(generateErrorResponse(e));
+          // methods.error.call(methods, {}, e);
+          // methods.always.call(methods, globalRes);
         });
 
-      });
-      req.on('error', function(e) {
-        methods.error.call(methods, {}, e);
-        methods.always.call(methods, globalRes);
-      });
-
-      // if ((contentType.indexOf('json') > -1)) {
-      //   try {
-      //     payload.data = JSON.stringify(payload.data);
-      //   } catch (e) {
-      //     console.error('Could not stringify data.')
-      //   }
-      // }
-      payload.data = stringifyData(payload.data);
-      req.write(payload.data);
-      req.end();
-      return atomXHR;
-    }
+        // if ((contentType.indexOf('json') > -1)) {
+        //   try {
+        //     payload.data = JSON.stringify(payload.data);
+        //   } catch (e) {
+        //     console.error('Could not stringify data.')
+        //   }
+        // }
+        payload.data = stringifyData(payload.data);
+        req.write(payload.data);
+        req.end();
+      }
+    });
 
   }
 

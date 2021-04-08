@@ -51,7 +51,7 @@ const slapform = new (require('slapform'));
 ### Install via CDN
 Install with CDN if you plan to use Slapform only in a browser environment.
 ```html
-<script src="https://cdn.jsdelivr.net/npm/slapform@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/slapform@latest/dist/index.min.js"></script>
 <script type="text/javascript">
   var slapform = new Slapform(); // The script above exposes the global variable 'Slapform'
 </script>
@@ -71,14 +71,14 @@ slapform.submit({
     message: 'Hello World!'
   }
 })
-.success(function (response, data) { // This function runs only on success
-  console.log('Success!', response, data);
+.then(function (response) { // This function runs only on success
+  console.log('Success!', response);
 })
-.error(function (response, error) { // This function runs only on error
-  console.log('Fail!', response, error);
+.catch(function (response) { // This function runs only on error
+  console.log('Fail!', response);
 })
-.always(function (response) { // This function runs regardless of success or error
-  console.log('This always runs!', response);
+.finally(function () { // This function runs regardless of success or error
+  console.log('This always runs!');
 });
 ```
 

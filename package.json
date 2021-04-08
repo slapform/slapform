@@ -1,10 +1,11 @@
 {
   "name": "slapform",
-  "version": "1.5.6",
+  "version": "2.0.1",
   "description": "Easily send submission to Slapform, your favorite form backend service.",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "node ./src/prepare.js"
   },
   "engines": {
     "node": ">=6.0.0"
@@ -35,5 +36,8 @@
   "bugs": {
     "url": "https://github.com/slapform/slapform/issues"
   },
-  "homepage": "https://slapform.com"
+  "homepage": "https://slapform.com",
+  "devDependencies": {
+    "fs-jetpack": "^4.1.0"
+  }
 }
