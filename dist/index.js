@@ -82,6 +82,7 @@
     payload.environment = payload.environment || environment || 'browser';
     payload.data = payload.data || {};
     payload.account = payload.account || payload.data.slap_email || payload.data.slap_account || '';
+    payload.form = payload.form || '';
     payload.endpoint = payload.endpoint || 'https://api.slapform.com';
 
     // var contentType = 'application/json';

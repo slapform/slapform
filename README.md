@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://cdn.itwcreativeworks.com/assets/slapform/images/logo/slapform-brandmark-blue-x.svg">
-    <img src="https://cdn.itwcreativeworks.com/assets/slapform/images/logo/slapform-brandmark-blue-x.svg">
+    <img src="https://cdn.itwcreativeworks.com/assets/slapform/images/logo/slapform-brandmark-blue-x.svg" width="100px">
   </a>
 </p>
 
