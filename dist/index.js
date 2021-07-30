@@ -18,7 +18,7 @@
 
   var environment = (Object.prototype.toString.call(typeof process !== 'undefined' ? process : 0) === '[object process]') ? 'node' : 'browser';
   var SOURCE = 'library';
-  var VERSION = '2.0.2';
+  var VERSION = '2.0.3';
 
   function Slapform(account, options) {
     this.account = account || '';
@@ -81,8 +81,7 @@
     payload = payload || {};
     payload.environment = payload.environment || environment || 'browser';
     payload.data = payload.data || {};
-    payload.account = payload.account || payload.data.slap_email || payload.data.slap_account || '';
-    payload.form = payload.form || '';
+    payload.form = payload.form || payload.account || payload.data.slap_email || payload.data.slap_account || '';
     payload.endpoint = payload.endpoint || 'https://api.slapform.com';
 
     // var contentType = 'application/json';
@@ -101,7 +100,7 @@
         var XHR = window.XMLHttpRequest || XMLHttpRequest || ActiveXObject;
         var request = new XHR('MSXML2.XMLHTTP.3.0');
 
-        request.open('POST', payload.endpoint + '/' + payload.account, true);
+        request.open('POST', payload.endpoint + '/' + payload.form, true);
         request.setRequestHeader('Content-type', contentType);
         request.setRequestHeader('Accept', accept);
         // request.setRequestHeader('Referer', window && window.location ? window.location.href : '' );
@@ -146,7 +145,7 @@
           hostname: parsedURL.hostname,
           // hostname: 'api.INCORRECTTEST.com',
           // port: 443,
-          path: '/' + payload.account,
+          path: '/' + payload.form,
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
