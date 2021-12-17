@@ -18,7 +18,7 @@
 
   var environment = (Object.prototype.toString.call(typeof process !== 'undefined' ? process : 0) === '[object process]') ? 'node' : 'browser';
   var SOURCE = 'library';
-  var VERSION = '2.0.3';
+  var VERSION = '2.0.4';
 
   function Slapform(account, options) {
     this.account = account || '';
@@ -92,6 +92,7 @@
     // Set values
     payload.data._version = VERSION;
     payload.data._source = SOURCE;
+    payload.data._referrer = getLocation();
 
     return new Promise(function(resolve, reject) {
       if (payload.environment === 'browser') {
@@ -205,6 +206,14 @@
       }
     });
 
+  }
+
+  function getLocation() {
+    try {
+      return window.location.href;
+    } catch (e) {
+      return null;
+    }
   }
 
   function stringifyData(data) {

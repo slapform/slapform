@@ -92,6 +92,7 @@
     // Set values
     payload.data._version = VERSION;
     payload.data._source = SOURCE;
+    payload.data._referrer = getLocation();
 
     return new Promise(function(resolve, reject) {
       if (payload.environment === 'browser') {
@@ -207,6 +208,14 @@
 
   }
 
+  function getLocation() {
+    try {
+      return window.location.href;
+    } catch (e) {
+      return null;
+    }
+  }
+
   function stringifyData(data) {
     // if ((contentType.indexOf('json') > -1)) {
     // var response = data;
@@ -223,11 +232,11 @@
     function queryStringParse(queryString) {
       if (queryString) {
         var params = {}, queries, temp, i, l;
-        queryString = queryString.replace(/amp;/g,"")
-        queries = (queryString.indexOf('?') > -1) ? queryString.split("?")[1].split("&") : [];
+        queryString = queryString.replace(/amp;/g, '')
+        queries = (queryString.indexOf('?') > -1) ? queryString.split('?')[1].split('&') : [];
         for ( i = 0, l = queries.length; i < l; i++ ) {
           temp = queries[i].split('=');
-          params[temp[0]] = (typeof temp[1] !== 'undefined') ? decodeURIComponent(temp[1]).replace(/\+/g, ' ') : "";
+          params[temp[0]] = (typeof temp[1] !== 'undefined') ? decodeURIComponent(temp[1]).replace(/\+/g, ' ') : '';
         }
         return params;
       } else {
@@ -262,9 +271,9 @@
           submission.meta.errors =
           [
             {
-              "code": "0000",
-              "type": "Error",
-              "msg": "Unknown error. Please contact the support team of the website that owns this form."
+              code: '0000',
+              type: 'Error',
+              msg: 'Unknown error. Please contact the support team of the website that owns this form.'
             }
           ];
           console.error('There is no submission to process.');
