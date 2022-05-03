@@ -18,7 +18,7 @@
 
   var environment = (Object.prototype.toString.call(typeof process !== 'undefined' ? process : 0) === '[object process]') ? 'node' : 'browser';
   var SOURCE = 'library';
-  var VERSION = '2.0.4';
+  var VERSION = '2.0.5';
 
   function Slapform(account, options) {
     this.account = account || '';
@@ -232,11 +232,11 @@
     function queryStringParse(queryString) {
       if (queryString) {
         var params = {}, queries, temp, i, l;
-        queryString = queryString.replace(/amp;/g,"")
-        queries = (queryString.indexOf('?') > -1) ? queryString.split("?")[1].split("&") : [];
+        queryString = queryString.replace(/amp;/g, '')
+        queries = (queryString.indexOf('?') > -1) ? queryString.split('?')[1].split('&') : [];
         for ( i = 0, l = queries.length; i < l; i++ ) {
           temp = queries[i].split('=');
-          params[temp[0]] = (typeof temp[1] !== 'undefined') ? decodeURIComponent(temp[1]).replace(/\+/g, ' ') : "";
+          params[temp[0]] = (typeof temp[1] !== 'undefined') ? decodeURIComponent(temp[1]).replace(/\+/g, ' ') : '';
         }
         return params;
       } else {
@@ -271,9 +271,9 @@
           submission.meta.errors =
           [
             {
-              "code": "0000",
-              "type": "Error",
-              "msg": "Unknown error. Please contact the support team of the website that owns this form."
+              code: '0000',
+              type: 'Error',
+              msg: 'Unknown error. Please contact the support team of the website that owns this form.'
             }
           ];
           console.error('There is no submission to process.');

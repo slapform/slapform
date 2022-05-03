@@ -27,7 +27,7 @@
 </p>
 
 ## Slapform Works in Node AND browser environments
-Yes, this module works in both Node and browser environments, including compatability with [Webpack](https://www.npmjs.com/package/webpack) and [Browserify](https://www.npmjs.com/package/browserify)!
+Yes, this module works in both Node and browser environments, including compatibility with [Webpack](https://www.npmjs.com/package/webpack) and [Browserify](https://www.npmjs.com/package/browserify)!
 
 ## Features
 * Submit data via HTML forms, AJAX requests, or our custom npm module
