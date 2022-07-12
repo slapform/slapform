@@ -60,24 +60,34 @@ Install with CDN if you plan to use Slapform only in a browser environment.
 ### Use without installation
 You can also use Slapform without installing any additional libraries by using HTML forms or jQuery's AJAX. Please see the section below for details.
 
+## Create a free form
+Slapform is **free**! You just need to [create a form](https://slapform.com/dashboard/forms/new).
+
+After creating a form, you will get your **form ID** that you can use in your forms!
+
 ## Using Slapform
 ### Via the npm module or the CDN
 After you have followed the install step, you can start using `slapform` with your website or software!
 ```js
 slapform.submit({
-  account: 'your@email.com', // Replace this with the email that submissions should be sent to
-  data: { // The data you want submitted and emailed to you
+  // Replace this with the form ID that submissions should be sent to
+  form: '{form_id}',
+  // The data you want submitted and emailed to you
+  data: {
     name: 'Jon Snow',
     message: 'Hello World!'
   }
 })
-.then(function (response) { // This function runs only on success
+.then(function (response) {
+  // This function runs only on success
   console.log('Success!', response);
 })
-.catch(function (response) { // This function runs only on error
+.catch(function (response) {
+  // This function runs only on error
   console.log('Fail!', response);
 })
-.finally(function () { // This function runs regardless of success or error
+.finally(function () {
+  // This function runs regardless of success or error
   console.log('This always runs!');
 });
 ```
@@ -86,12 +96,12 @@ slapform.submit({
 You can use Slapform without installing this npm module or any other javascript simply by using an HTML form and pointing the `action` to our endpoint!
 ```html
 <form method="POST"
-  action="https://api.slapform.com/your@email.com">
+  action="https://api.slapform.com/{form_id}">
   <input type="email" name="email">
   <textarea type="text" name="message"></textarea>
   <button type="submit">Submit</button>
 </form>
-<!-- Just copy/paste this on your site and change 'your@email.com' to your email! -->
+<!-- Just copy/paste this on your site and change '{form_id}' to your form ID! -->
 ```
 
 ## Extending Capabilities
@@ -99,18 +109,17 @@ You can use Slapform without installing this npm module or any other javascript 
 In addition to sending simple data, you can take advantage of advanced name triggers to submit with your data. These will trigger special events on the server such as webhooks or the ability to process payments.
 ```js
 slapform.submit({
-  account: 'your@email.com', // Replace this with the email that submissions should be sent to
+  // Replace this with the form ID that submissions should be sent to
+  form: '{form_id}',  
+
+  // The data you want submitted and emailed to you
   data: {
     name: 'Jon Snow',
     message: 'Hello World! This is my first Slapform submission.',
     slap_subject: 'My Favorite Message',
     slap_replyto: 'custom@replyto.com'
     slap_debug: false,
-    slap_webhook: 'https://yourwebsite.com/webhook', // We'll send a POST request with the submission data to this URL!
     slap_honey: ''
-    /* These Slapform Name Triggers exist but aren't applicable to AJAX submissions */
-    // slap_redirect: 'https://yourwebsite.com',
-    // slap_captcha: false,
   }
 })
 ```

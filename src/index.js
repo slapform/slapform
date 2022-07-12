@@ -14,14 +14,12 @@
   }
 }(typeof self !== 'undefined' ? self : this, function () {
 
-  this.extra = '17'; //@@@ Delete later
-
   var environment = (Object.prototype.toString.call(typeof process !== 'undefined' ? process : 0) === '[object process]') ? 'node' : 'browser';
   var SOURCE = 'library';
   var VERSION = '{version}';
 
-  function Slapform(account, options) {
-    this.account = account || '';
+  function Slapform(form, options) {
+    this.form = form || '';
     this.options = options || {};
     // this.environment = '';
   };
@@ -36,13 +34,6 @@
     }
     return [result, req];
   };
-
-  // var debugDELETE = function (req) {
-  //   for (var i = 0; i < req.length; i++) {
-  //     console.log(req[i]);
-  //   }
-  //   return false;
-  // };
 
   function loopErrors(errors) {
     for (var i = 0; i < errors.length; i++) {
