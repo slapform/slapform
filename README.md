@@ -7,8 +7,7 @@
 <p align="center">
   <img src="https://img.shields.io/github/package-json/v/slapform/slapform.svg">
   <br>
-  <img src="https://img.shields.io/david/slapform/slapform.svg">
-  <img src="https://img.shields.io/david/dev/slapform/slapform.svg">
+  <img src="https://img.shields.io/librariesio/release/npm/slapform.svg">
   <img src="https://img.shields.io/bundlephobia/min/slapform.svg">
   <img src="https://img.shields.io/codeclimate/maintainability-percentage/slapform/slapform.svg">
   <img src="https://img.shields.io/npm/dm/slapform.svg">

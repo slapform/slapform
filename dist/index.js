@@ -16,7 +16,7 @@
 
   var environment = (Object.prototype.toString.call(typeof process !== 'undefined' ? process : 0) === '[object process]') ? 'node' : 'browser';
   var SOURCE = 'library';
-  var VERSION = '2.0.8';
+  var VERSION = '2.0.9';
 
   function Slapform(form, options) {
     this.form = form || '';
