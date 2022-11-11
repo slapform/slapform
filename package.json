@@ -39,7 +39,7 @@
   "homepage": "https://slapform.com",
   "devDependencies": {
     "fs-jetpack": "^4.1.0",
-    "mocha": "^8.4.0",
+    "mocha": "^10.1.0",
     "prepare-package": "^0.0.16"
   }
 }
