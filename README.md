@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://cdn.itwcreativeworks.com/assets/slapform/images/logo/slapform-brandmark-blue-x.svg">
+  <a href="https://slapform.com">
     <img src="https://cdn.itwcreativeworks.com/assets/slapform/images/logo/slapform-brandmark-blue-x.svg" width="100px">
   </a>
 </p>
@@ -25,18 +25,18 @@
   <br>
 </p>
 
-## Slapform Works in Node AND browser environments
+## 🌐 Slapform Works in Node AND browser environments
 Yes, this module works in both Node and browser environments, including compatibility with [Webpack](https://www.npmjs.com/package/webpack) and [Browserify](https://www.npmjs.com/package/browserify)!
 
-## Features
+## 🦄 Features
 * Submit data via HTML forms, AJAX requests, or our custom npm module
 * Submissions are sent directly to your email
 * Access your submissions stored in our secure cloud server for up to 12 months
 * Spam protection
 * Zapier integration—connect Slapform with *any* service!
 
-## Install Slapform
-### Install via npm
+## 📦 Install Slapform
+### Option 1: Install via npm
 Install with npm if you plan to use Slapform in a Node project or in the browser.
 ```shell
 npm install slapform
@@ -47,7 +47,7 @@ If you plan to use `slapform` in a browser environment, you will probably need t
 const slapform = new (require('slapform'));
 ```
 
-### Install via CDN
+### Option 2: Install via CDN
 Install with CDN if you plan to use Slapform only in a browser environment.
 ```html
 <script src="https://cdn.jsdelivr.net/npm/slapform@latest/dist/index.min.js"></script>
@@ -56,15 +56,15 @@ Install with CDN if you plan to use Slapform only in a browser environment.
 </script>
 ```
 
-### Use without installation
+### Option 3: Use without installation
 You can also use Slapform without installing any additional libraries by using HTML forms or jQuery's AJAX. Please see the section below for details.
 
-## Create a free form
+## 🚀 Create a free form
 Slapform is **free**! You just need to [create a form](https://slapform.com/dashboard/forms/new).
 
 After creating a form, you will get your **form ID** that you can use in your forms!
 
-## Using Slapform
+## ⚡️ Using Slapform
 ### Via the npm module or the CDN
 After you have followed the install step, you can start using `slapform` with your website or software!
 ```js
@@ -103,13 +103,13 @@ You can use Slapform without installing this npm module or any other javascript 
 <!-- Just copy/paste this on your site and change '{form_id}' to your form ID! -->
 ```
 
-## Extending Capabilities
+## 🧩 Extending Capabilities
 ### Using Advanced Name Triggers
 In addition to sending simple data, you can take advantage of advanced name triggers to submit with your data. These will trigger special events on the server such as webhooks or the ability to process payments.
 ```js
 slapform.submit({
   // Replace this with the form ID that submissions should be sent to
-  form: '{form_id}',  
+  form: '{form_id}',
 
   // The data you want submitted and emailed to you
   data: {
@@ -125,14 +125,14 @@ slapform.submit({
 
 For a more in-depth overview of how these triggers work, please see the [Slapform name trigger documentation](https://slapform.com/docs/name-triggers/).
 
-## What Can Slapform do?
+## 📝 What Can Slapform do?
 Slapform is a [form backend service](https://slapform.com) that you can use to submit data without managing a backend server. Slapform allows you to focus on the fun and productive parts of web development without worrying about building another form processing backend. Slapform works perfect as a [Jekyll contact form](https://slapform.com/docs/make-a-jekyll-contact-form/) or a [static site contact form](https://slapform.com/).
 
-## Final Words
+## 🗨️ Final Words
 If you are still having difficulty, we would love for you to post
 a question to [the Slapform issues page](https://github.com/slapform/slapform/issues). It is much easier to answer questions that include your code and relevant files! So if you can provide them, we'd be extremely grateful (and more likely to help you find the answer!)
 
-## Projects Using this Library
+## 📚 Projects Using this Library
 [Somiibo](https://somiibo.com/): A Social Media Bot with an open-source module library. <br>
 [JekyllUp](https://jekyllup.com/): A website devoted to sharing the best Jekyll themes. <br>
 [Slapform](https://slapform.com/): A backend processor for your HTML forms on static sites. <br>
