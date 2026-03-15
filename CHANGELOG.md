@@ -15,6 +15,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `Security` in case of vulnerabilities.
 
 ---
+## [3.0.0] - 2026-03-15
+### BREAKING
+- Constructor option renamed from `form` to `formId` (`form` still accepted for backwards compat)
+- `submit()` signature changed to `submit(formId?, data, options?)` — form ID can now be passed as first argument
+- Removed legacy JSON error processing — now uses semantic HTTP responses
+
+### Changed
+- Migrated to prepare-package bundle mode (ESM, CJS, IIFE outputs)
+- Simplified module to use native `fetch` and modern error handling
+- Rewrote tests with comprehensive coverage (21 tests)
+- Updated README with modern examples and new API docs
+- Upgraded all dependencies to latest
+
+### Removed
+- Custom build tooling, `.npmignore`, and `CNAME`
+
+### Added
+- Browser support via `window.Slapform` and ESM exports
+- `dist/` added to `.gitignore`, using `"files"` field in package.json instead
+
+---
 ## [1.0.0] - 2024-06-19
 ### Added
 - Initial release of the project 🚀
