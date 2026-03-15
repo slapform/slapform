@@ -1,3 +1,5 @@
+import WonderfulFetch from 'wonderful-fetch';
+
 const VERSION = '{version}';
 const DEFAULT_ENDPOINT = 'https://api.slapform.com';
 
@@ -33,21 +35,12 @@ class Slapform {
       _referrer: getLocation(),
     });
 
-    const response = await fetch(`${endpoint}/${resolvedFormId}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify(data),
+    return WonderfulFetch(`${endpoint}/${resolvedFormId}`, {
+      method: 'post',
+      response: 'json',
+      body: data,
+      cacheBreaker: false,
     });
-
-    if (!response.ok) {
-      const text = await response.text();
-      throw new Error(text || `HTTP ${response.status}`);
-    }
-
-    return response.json();
   }
 }
 

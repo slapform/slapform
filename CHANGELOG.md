@@ -15,6 +15,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `Security` in case of vulnerabilities.
 
 ---
+## [3.0.2] - 2026-03-15
+### Changed
+- Replaced raw `fetch()` with `wonderful-fetch` for HTTP requests (handles JSON serialization, response parsing, and error handling)
+- Added `wonderful-fetch` ^2.0.4 as a dependency
+- Updated test mocks for wonderful-fetch compatibility
+
+---
 ## [3.0.1] - 2026-03-15
 ### Changed
 - README: Show both ESM and CJS import patterns in quick start (matching wonderful-fetch convention)

@@ -1,6 +1,6 @@
 {
   "name": "slapform",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Easily send submission to Slapform, your favorite form backend service.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -68,7 +68,8 @@
   },
   "homepage": "https://slapform.com",
   "dependencies": {
-    "itwcw-package-analytics": "^1.0.8"
+    "itwcw-package-analytics": "^1.0.8",
+    "wonderful-fetch": "^2.0.4"
   },
   "devDependencies": {
     "mocha": "^11.7.5",
