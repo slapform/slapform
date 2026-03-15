@@ -2,7 +2,7 @@ const pkg = require('../package.json');
 const assert = require('assert');
 
 describe(`${pkg.name}`, () => {
-  const Slapform = require('../dist/index.js').default;
+  const Slapform = require('../dist/index.js');
 
   // Store original fetch so we can restore it
   let originalFetch;

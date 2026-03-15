@@ -15,6 +15,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `Security` in case of vulnerabilities.
 
 ---
+## [3.0.1] - 2026-03-15
+### Changed
+- README: Show both ESM and CJS import patterns in quick start (matching wonderful-fetch convention)
+- Bump prepare-package to 2.0.7
+- Fix test import for CJS compatibility
+
+---
 ## [3.0.0] - 2026-03-15
 ### BREAKING
 - Constructor option renamed from `form` to `formId` (`form` still accepted for backwards compat)

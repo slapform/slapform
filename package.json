@@ -1,6 +1,6 @@
 {
   "name": "slapform",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Easily send submission to Slapform, your favorite form backend service.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -72,6 +72,6 @@
   },
   "devDependencies": {
     "mocha": "^11.7.5",
-    "prepare-package": "^2.0.4"
+    "prepare-package": "^2.0.7"
   }
 }

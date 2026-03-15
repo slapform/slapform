@@ -53,8 +53,14 @@ npm install slapform
 ```
 
 ```js
+// ESM
 import Slapform from 'slapform';
 
+// CommonJS
+const Slapform = require('slapform').default;
+```
+
+```js
 const slapform = new Slapform({ formId: 'YOUR_FORM_ID' });
 
 const response = await slapform.submit({
