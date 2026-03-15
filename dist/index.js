@@ -266,7 +266,7 @@ if (typeof window !== "undefined") {
 var index_default = WonderfulFetch;
 
 // src/index.js
-var VERSION = "3.0.1";
+var VERSION = "3.0.2";
 var DEFAULT_ENDPOINT = "https://api.slapform.com";
 var Slapform = class {
   constructor(options) {
