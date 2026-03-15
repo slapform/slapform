@@ -57,7 +57,7 @@ npm install slapform
 import Slapform from 'slapform';
 
 // CommonJS
-const Slapform = require('slapform').default;
+const Slapform = require('slapform');
 ```
 
 ```js
